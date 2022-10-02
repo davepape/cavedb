@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Add new LinkCategory</h1>
+
+<form method="POST" action="{% url 'addLinkCategory' %}">
+{% csrf_token %}
+
+<label for="namefield">Name</label>
+<input type="text" name="namefield" id="namefield" size="60" placeholder=""/>
+<br>
+
+<label for="category1field">Category1</label>
+<select name="category1field" id="category1field"><option value="0">[any]</option> {% for k in categories %} <option value="{{ k.id }}">{{ k.name }}</option> {% endfor %} </select>
+<br>
+<label for="category2field">Category2</label>
+<select name="category2field" id="category2field"><option value="0">[any]</option> {% for k in categories %} <option value="{{ k.id }}">{{ k.name }}</option> {% endfor %} </select>
+<br>
+
+<input type="submit" name="submit" value="Add">
+</form>
+
+<br><br>
+<h2>Existing link categories</h2>
+<table>
+{% for c in linkcategories %}
+<tr><td>{{c.entity1Category.name}}</td> <td><strong>{{c.name}}</strong></td> <td>{{c.entity2Category.name}}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

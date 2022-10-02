@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Import from CSV</h1>
+
+<h2>Entities</h2>
+<form method="POST" action="{% url 'importCSVEntities' %}" enctype="multipart/form-data">
+{% csrf_token %}
+<label for="entityfilefield">File</label>
+<input type="file" name="entityfilefield" id="entityfilefield" accept="text/csv">
+<input type="checkbox" name="showduplicates" id="showduplicates"><label for="showduplicates">Report duplicates</label>
+<input type="submit" name="submitentity" value="Import">
+</form>
+
+<h2>Links</h2>
+<form method="POST" action="{% url 'importCSVLinks' %}" enctype="multipart/form-data">
+{% csrf_token %}
+<label for="linkfilefield">File</label>
+<input type="file" name="linkfilefield" id="linkfilefield" accept="text/csv">
+<input type="checkbox" name="showduplicates" id="showduplicates"><label for="showduplicates">Report duplicates</label>
+<input type="submit" name="submitlink" value="Import">
+</form>
+
+{% endblock %}

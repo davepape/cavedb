@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Edit entity</h1>
+
+<form method="POST" action="{% url 'editEntity' %}">
+{% csrf_token %}
+<input type="hidden" name="idfield" id="idfield" value="{{entity.id}}">
+
+<label for="namefield">Name</label>
+<input type="text" name="namefield" id="namefield" size="60" value="{{entity.name}}"/>
+<br>
+
+<label for="sortfield">Sort key</label>
+<input type="text" name="sortfield" id="sortfield" size="60" value="{{entity.sortkey}}"/>
+<br>
+
+<label for="categoryfield">Category</label>
+<select name="categoryfield" id="categoryfield"> {% for k in categories %} <option value="{{ k.id }}" {% if entity.category == k %}selected{% endif %}>{{ k.name }}</option> {% endfor %} </select>
+<br>
+
+<label for="urlfield">URL</label>
+<input type="text" name="urlfield" id="urlfield" size="60" value="{{entity.url}}"/>
+<br>
+
+<label for="descriptionfield" style="vertical-align: top">Description</label>
+<textarea name="descriptionfield" id="descriptionfield" cols="60">
+{{entity.description}}
+</textarea>
+<br>
+
+<input type="submit" name="submit" value="Update">
+</form>
+{% endblock %}

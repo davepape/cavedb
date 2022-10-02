@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Results of import</h1>
+
+<ul>
+{% for e in errors %}
+<li>Error: {{e}}</li>
+{% endfor %}
+</ul>
+
+<ul>
+{% for l in links %}
+<li> {{l.entity1.name}}: {{l.category.name}} {{l.entity2.name}}</li>
+{% endfor %}
+</ul>
+{% endblock %}

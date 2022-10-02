@@ -1,0 +1,8 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<ul>
+{% for e in entities %}
+<li> {{e.category.name}}: <a href="{% url 'showEntity' e.id %}">{{e.name}}</a>
+{% endfor %}
+</ul>
+{% endblock %}

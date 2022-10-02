@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Search</h1>
+
+<form method="POST" action="{% url 'searchName' %}">
+{% csrf_token %}
+<label for="termfield">Search for name:</label>
+<input type="text" name="termfield" id="termfield" size="30" placeholder=""/>
+<input type="submit" name="submit" value="Search">
+</form>
+
+<form method="POST" action="{% url 'search' %}">
+{% csrf_token %}
+<label for="termfield2">General search:</label>
+<input type="text" name="termfield" id="termfield2" size="30" placeholder=""/>
+<input type="submit" name="submit" value="Search">
+</form>
+
+{% endblock %}

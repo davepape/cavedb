@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>{{ entity.name }}</h1>
+<p>({{ entity.category.name }})</p>
+<p>URL: <a href="{{entity.url}}">{{ entity.url }}</a></p>
+<p>Description: {{ entity.description }}</p>
+
+<br>
+[<a href="{% url 'editEntityForm' entity.id %}">edit</a>]
+<br><br>
+<h2 style="display:inline">links</h2> <a href="{% url 'addLinkForm' entity.id %}">(add)</a>
+
+<ul>
+{% for l in linksfrom %}
+<li>{{ l.category.name }}: <a href="{% url 'showEntity' l.entity2.id %}">{{ l.entity2.name }}</a>
+{% endfor %}
+</ul>
+<ul>
+{% for l in linksto %}
+<li><a href="{% url 'showEntity' l.entity1.id %}">{{ l.entity1.name }}</a>: {{ l.category.name }}
+{% endfor %}
+</ul>
+{% endblock %}
