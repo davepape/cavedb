@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Add new EntityCategory</h1>
+
+<form method="POST" action="{% url 'addCategory' %}">
+{% csrf_token %}
+
+<label for="namefield">Name</label>
+<input type="text" name="namefield" id="namefield" size="60" placeholder=""/>
+<br>
+
+<input type="submit" name="submit" value="Add">
+</form>
+
+<br><br>
+<h2>Existing entity categories</h2>
+<ul>
+{% for c in categories %}
+<li>{{c.name}}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
