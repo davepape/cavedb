@@ -1,4 +1,5 @@
 {% extends "base_generic.html" %}
+{% block subtitle %}edit {{entity.name}}{% endblock %}
 {% block content %}
 <h1>Edit entity</h1>
 
@@ -23,9 +24,7 @@
 <br>
 
 <label for="descriptionfield" style="vertical-align: top">Description</label>
-<textarea name="descriptionfield" id="descriptionfield" cols="60">
-{{entity.description}}
-</textarea>
+<textarea name="descriptionfield" id="descriptionfield" cols="60">{{entity.description}}</textarea>
 <br>
 
 <input type="submit" name="submit" value="Update">

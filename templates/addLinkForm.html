@@ -1,6 +1,9 @@
 {% extends "base_generic.html" %}
+{% block subtitle %}add link{% endblock %}
 {% block content %}
 <h1>Add link</h1>
+
+<h2>Link <em>from</em> this entity</h2>
 
 <form method="POST" action="{% url 'addLink' %}">
 {% csrf_token %}
@@ -20,4 +23,27 @@
 
 <input type="submit" name="submit" value="Add">
 </form>
+
+
+<h2>Link <em>to</em> this entity</h2>
+
+<form method="POST" action="{% url 'addLink' %}">
+{% csrf_token %}
+
+<p>
+<label for="entity2field">Entity</label>
+<select name="entity1field" id="entity2field"> {% for e2 in allentities %} <option value="{{ e2.id }}">{{ e2.name }}</option> {% endfor %} </select>
+<br>
+
+<label for="categoryfield">Category</label>
+<select name="categoryfield" id="categoryfield"> {% for k in categories %} <option value="{{ k.id }}">{{ k.name }}</option> {% endfor %} </select>
+<br>
+
+<a href="{% url 'showEntity' e.id %}">{{ e.name }}</a>
+<input type="hidden" name="entity2field" value="{{ e.id }}">
+<br>
+
+<input type="submit" name="submit" value="Add">
+</form>
+
 {% endblock %}

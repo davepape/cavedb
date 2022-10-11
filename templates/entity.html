@@ -1,14 +1,17 @@
 {% extends "base_generic.html" %}
+{% block subtitle %}{{entity.name}}{% endblock %}
 {% block content %}
 <h1>{{ entity.name }}</h1>
 <p>({{ entity.category.name }})</p>
 <p>URL: <a href="{{entity.url}}">{{ entity.url }}</a></p>
 <p>Description: {{ entity.description }}</p>
 
+{% if user.is_authenticated %}
 <br>
 [<a href="{% url 'editEntityForm' entity.id %}">edit</a>]
+{% endif %}
 <br><br>
-<h2 style="display:inline">links</h2> <a href="{% url 'addLinkForm' entity.id %}">(add)</a>
+<h2 style="display:inline">links</h2> {% if user.is_authenticated %}<a href="{% url 'addLinkForm' entity.id %}">(add)</a>{% endif %}
 
 <ul>
 {% for l in linksfrom %}

@@ -27,7 +27,8 @@ a[href]:after { content: none }
   <li><a href="{% url 'index' %}">Home</a></li>
   <li><a href="{% url 'searchForm' %}">Search</a></li>
   <li><a href="{% url 'listEntities' %}">List entities</a>
-  <li><a href="{% url 'graph' %}">Graph vis</a>
+  <li><a href="{% url 'network' %}">Network vis</a>
+{% if user.is_authenticated %}
   <li>&nbsp;
   <li><a href="{% url 'addEntityForm' %}">Add entity</a>
   <li><a href="{% url 'addCategoryForm' %}">Add category</a>
@@ -35,6 +36,9 @@ a[href]:after { content: none }
   <li><a href="{% url 'importCSVForm' %}">Import CSV file</a>
   <li><a href="{% url 'exportCSVEntities' %}">Export CSV (entities)</a>
   <li><a href="{% url 'exportCSVLinks' %}">Export CSV (links)</a>
+{% else %}
+<li> you aren't logged in
+{% endif %}
   </ul>
 {% endblock %}
 </div>

@@ -1,7 +1,6 @@
 {% extends "base_generic.html" %}
 {% block content %}
-<ul>
-<li><a href="{% url 'listEntities' %}">List entities</a>
-<li><a href="{% url 'addEntityForm' %}">Add entity</a>
-</ul>
+<h1>CAVE Art History Database</h1>
+{% load static %}
+<a href="{% url 'network' %}"><img src="{% static 'network_screenshot.jpg' %}"></a>
 {% endblock %}
