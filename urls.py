@@ -24,5 +24,5 @@ urlpatterns = [
     path('importcsvlinks', views.importCSVLinks, name='importCSVLinks'),
     path('exportcsventities', views.exportCSVEntities, name='exportCSVEntities'),
     path('exportcsvlinks', views.exportCSVLinks, name='exportCSVLinks'),
-    path('graph', views.graph, name='graph'),
+    path('network', views.network, name='network'),
 ]
