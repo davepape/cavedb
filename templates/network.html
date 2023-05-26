@@ -40,6 +40,7 @@
   height: 50px;
   margin: auto auto auto auto;
   font-size: 22px;
+  font-family: Arial;
   color: #000000;
 }
 
@@ -125,6 +126,7 @@ div.outerBorder {
       </div>
     </div>
   </div>
+<button onclick="network.setOptions({nodes:{physics:false}})">freeze</button>
 </div>
 
 <script type="text/javascript">
@@ -148,7 +150,9 @@ div.outerBorder {
         nodes: nodes,
         edges: edges,
       };
-    var options = { layout: { improvedLayout: false } };
+    var options = { layout: { improvedLayout: false },
+//                    physics: { "barnesHut": { "springConstant": 0.04, "avoidOverlap": 0.9 } }
+                  };
     var network = new vis.Network(container, data, options);
 
     network.on("stabilizationProgress", function (params) {
